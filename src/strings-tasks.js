@@ -146,8 +146,10 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const id = str.indexOf(value);
+  if (id === -1) return str;
+  return str.slice(0, id) + str.slice(id + value.length);
 }
 
 /**
@@ -162,8 +164,10 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const id = str.lastIndexOf(value);
+  if (id === -1) return str;
+  return str.slice(0, id) + str.slice(id + value.length);
 }
 
 /**
@@ -289,8 +293,10 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowels = 'aeiouyAEIOUY';
+  if (str == null) return 0;
+  return [...str].filter((char) => vowels.includes(char)).length;
 }
 
 /**
@@ -322,8 +328,8 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  return sentence.split(' ').sort((a, b) => b.length - a.length)[0];
 }
 
 /**
